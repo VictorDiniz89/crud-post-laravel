@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
         $post = Post::all();
-        return view('post.index', compact('post'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -31,7 +31,7 @@ class PostController extends Controller
             'body' => 'required',
         ]);
         Post::create($request->all());
-        return redirect()->route('post.index')->with('success','Post created successfully.');
+        return redirect()->route('posts.index')->with('success','Post created successfully.');
     }
 
     /**
@@ -43,7 +43,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('post.show', compact('post'));
+        return view('posts.show', compact('post'));
     }
 
     public function edit($id)
@@ -67,7 +67,7 @@ class PostController extends Controller
         ]);
         $post = Post::find($id);
         $post->update($request->all());
-        return redirect()->route('post.index')->with('sucess', 'Post updated successfully.');
+        return redirect()->route('posts.index')->with('sucess', 'Post updated successfully.');
     }
 
     /**
